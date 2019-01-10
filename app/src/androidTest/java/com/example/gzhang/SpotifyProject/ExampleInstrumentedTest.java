@@ -1,4 +1,4 @@
-package com.example.gzhang.practiceproject;
+package com.example.gzhang.SpotifyProject;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

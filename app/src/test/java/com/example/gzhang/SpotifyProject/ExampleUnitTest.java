@@ -1,4 +1,4 @@
-package com.example.gzhang.practiceproject;
+package com.example.gzhang.SpotifyProject;
 
 import org.junit.Test;
 
