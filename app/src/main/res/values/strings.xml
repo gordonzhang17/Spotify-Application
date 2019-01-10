@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Practice Project</string>
+    <string name="action_settings">Settings</string>
+    <string name="application_title">Spotify Application For Android</string>
+    <string name="application_welcome_description">Welcome to my Spotify Application!</string>
+
+
+</resources>
