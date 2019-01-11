@@ -10,9 +10,7 @@
     <string name="main_navigation_action_number_two">Find a song based off a song</string>
     <string name="main_navigation_action_number_three">Find a playlist based off an artist</string>
     <string name="main_navigation_action_return">Return to previous page</string>
-
-
-
+    <string name="title_activity_play_playlist">PlayPlaylistActivity</string>
 
 
 </resources>
