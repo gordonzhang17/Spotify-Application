@@ -1,16 +1,42 @@
 <resources>
     <string name="app_name">Spotify Project</string>
     <string name="action_settings">Settings</string>
+    <string name="action_readme">App Description</string>
+    <string name="action_close_app">Close App</string>
     <string name="main_activity_application_title">Spotify Application For Android</string>
-    <string name="main_activity_application_welcome_description">Welcome to my Spotify Application!</string>
-    <string name="main_activity_continue_button_text">Continue</string>
+    <string name="main_activity_application_welcome_description">Welcome to Spotify Application!</string>
+    <string name="main_activity_continue_button_text">Connect this app to your Spotify App</string>
+    <string name="main_activity_download_app_text">Download the Spotify App</string>
+    <string name="main_activity_application_developer">Developed by Gordon Zhang.</string>
     <string name="title_activity_main_navigation">MainNavigationActivity</string>
     <string name="main_navigation_description">What would you like to do today?</string>
+    <string name="main_navigation_user_title">Welcome: Michael</string>
     <string name="main_navigation_action_number_one">Find a song based off an artist</string>
     <string name="main_navigation_action_number_two">Find a song based off a song</string>
     <string name="main_navigation_action_number_three">Find a playlist based off an artist</string>
     <string name="main_navigation_action_return">Return to previous page</string>
     <string name="title_activity_play_playlist">PlayPlaylistActivity</string>
+    <string name="login_activity_login_authentication_error_title">Authentication Error</string>
+    <string name="login_activity_login_authentication_description">There was an error in authentication. Are you connected to the internet? Press Ok
+    to try again.</string>
+    <string name="login_activity_connection_error_title">Connection Error</string>
+    <string name="login_activity_connection_error_description">There was an error connecting to your Spotify app. Are you sure you have downloaded the app? Press Ok to retry.</string>
+    <string name="title_activity_play_song">PlaySongActivity</string>
+    <string name="alert_dialog_close">Close</string>
+    <string name="app_description_title">Spotify App Description</string>
+    <string name="app_description_description">Thanks for using the app. \n\nI created this app to work with the Spotify SDK for Android
+    as well as the Spotify Web APIs. Since I use Spotify every day, I decided to work on a personal project using Spotify. \n\nMy name is Gordon Zhang from Vancouver
+        and I am a third year student at UBC Vancouver currently on Co-op.
+    </string>
+    <string name="play_song_activity_search_hint_title">Search for a track</string>
+
+    <string name="play_song_activity_search_hint">Type in the song you want to find here</string>
+
+    <string name="play_song_activity_song_title">Title: </string>
+    <string name="play_song_activity_song_artist">Artist: </string>
+
+
+
 
 
 </resources>

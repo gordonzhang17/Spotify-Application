@@ -19,6 +19,15 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <TextView
+            android:id="@+id/main_navigation_user_name_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_navigation_user_title"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_text_size" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/main_navigation_description"
@@ -33,7 +42,7 @@
             <Button
                 style="@style/buttonAppearance"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/main_navigation_action_number_one" />
 
         </RelativeLayout>
@@ -46,7 +55,7 @@
             <Button
                 style="@style/buttonAppearance"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/main_navigation_action_number_two" />
 
         </RelativeLayout>
@@ -59,10 +68,25 @@
             <Button
                 style="@style/buttonAppearance"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/main_navigation_action_number_three" />
 
         </RelativeLayout>
+
+        <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="@style/buttonAppearance"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="@string/main_navigation_action_return"
+            android:onClick="returnToMainActivity"/>
+
+
+    </RelativeLayout>
 
         <RelativeLayout
 
@@ -72,13 +96,12 @@
             <Button
                 style="@style/buttonAppearance"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:text="@string/main_navigation_action_return"
-                android:onClick="returnToMainActivity"/>
+                android:layout_marginTop="25dp"
+                android:text="Play A Song"
+                android:onClick="playSong"/>
 
 
         </RelativeLayout>
-
 
     </LinearLayout>
 

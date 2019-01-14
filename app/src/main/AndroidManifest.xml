@@ -22,14 +22,22 @@
         <activity
             android:name=".MainNavigationActivity"
             android:label="@string/title_activity_main_navigation"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginAndConnectActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name="com.example.gzhang.SpotifyProject.OnCloseAppService"
+            android:stopWithTask="false" />
+
         <activity
-            android:name=".PlayPlaylistActivity"
-            android:label="@string/title_activity_play_playlist"
+            android:name=".PlaySongActivity"
+            android:label="@string/title_activity_play_song"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MenuInflaterActivity" />
     </application>
+
+
 
 </manifest>
