@@ -12,7 +12,7 @@
     <string name="main_navigation_description">What would you like to do today?</string>
     <string name="main_navigation_user_title">Welcome: Michael</string>
     <string name="main_navigation_action_number_one">Find a song based off an artist</string>
-    <string name="main_navigation_action_number_two">Find a song based off a song</string>
+    <string name="main_navigation_action_number_two">Find a song based off a title</string>
     <string name="main_navigation_action_number_three">Find a playlist based off an artist</string>
     <string name="main_navigation_action_return">Return to previous page</string>
     <string name="title_activity_play_playlist">PlayPlaylistActivity</string>
@@ -28,15 +28,14 @@
     as well as the Spotify Web APIs. Since I use Spotify every day, I decided to work on a personal project using Spotify. \n\nMy name is Gordon Zhang from Vancouver
         and I am a third year student at UBC Vancouver currently on Co-op.
     </string>
-    <string name="play_song_activity_search_hint_title">Search for a track</string>
+    <string name="search_song_activity_search_hint_title">Search for a track</string>
 
-    <string name="play_song_activity_search_hint">Type in the song you want to find here</string>
+    <string name="search_song_activity_search_hint">Type in the song you want to find here</string>
 
     <string name="play_song_activity_song_title">Title: </string>
     <string name="play_song_activity_song_artist">Artist: </string>
-
-
-
+    <string name="play_song_activity_song_album">Album: </string>
+    <string name="title_activity_search_song">SearchSongActivity</string>
 
 
 </resources>

@@ -35,8 +35,6 @@ public class LoginAndConnectActivity extends Activity {
     private Context mContext;
 
     private String accessToken;
-    private String displayName;
-    private String userEmail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,8 +125,10 @@ public class LoginAndConnectActivity extends Activity {
 
                 CurrentUser currentUser = new CurrentUser(name, email, accessToken);
 
-                connectToSpotifyApp();
+                CurrentUserSingleton currentUserSingleton = CurrentUserSingleton.getInstance();
+                currentUserSingleton.setCurrentUser(currentUser);
 
+                connectToSpotifyApp();
 
             }
 

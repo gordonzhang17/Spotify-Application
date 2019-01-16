@@ -22,21 +22,6 @@
             android:layout_marginTop="?attr/actionBarSize">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="@string/play_song_activity_search_hint_title"
-                android:textSize="28sp"
-                android:textStyle="bold"/>
-
-            <EditText
-                android:id="@+id/play_song_activity_search_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/play_song_activity_search_hint"
-                android:textAlignment="center"/>
-
-            <TextView
                 android:id="@+id/play_song_activity_song_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,11 +31,20 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/play_song_activity_song_artist"
+            android:id="@+id/play_song_activity_song_artist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/play_song_activity_song_artist"
+            android:textSize="28sp"
+            android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/play_song_activity_song_album"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="@string/play_song_activity_song_artist"
+                android:text="@string/play_song_activity_song_album"
                 android:textSize="28sp"
                 android:textStyle="bold"/>
 

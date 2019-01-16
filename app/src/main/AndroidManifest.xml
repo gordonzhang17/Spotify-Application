@@ -28,16 +28,18 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <service
-            android:name="com.example.gzhang.SpotifyProject.OnCloseAppService"
+            android:name=".OnCloseAppService"
             android:stopWithTask="false" />
 
         <activity
             android:name=".PlaySongActivity"
             android:label="@string/title_activity_play_song"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MenuInflaterActivity" />
+        <activity
+            android:name=".SearchSongActivity"
+            android:label="@string/title_activity_search_song"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-
-
 
 </manifest>

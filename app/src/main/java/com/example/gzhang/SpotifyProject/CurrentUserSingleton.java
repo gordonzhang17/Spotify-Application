@@ -1,21 +1,29 @@
 package com.example.gzhang.SpotifyProject;
 
-import com.spotify.android.appremote.api.SpotifyAppRemote;
-
 public class CurrentUserSingleton {
 
-    private static com.spotify.android.appremote.api.SpotifyAppRemote mSpotifyAppRemote;
+    private static CurrentUserSingleton mCurrentUserSingleton = null;
 
-    public void setSpotifyRemote(com.spotify.android.appremote.api.SpotifyAppRemote spotifyRemote) {
+    private CurrentUser mCurrentUser;
 
-        if (mSpotifyAppRemote == null) {
-            mSpotifyAppRemote = spotifyRemote;
+    private CurrentUserSingleton() {}
+
+    public static CurrentUserSingleton getInstance() {
+
+        if (mCurrentUserSingleton == null) {
+            mCurrentUserSingleton = new CurrentUserSingleton();
         }
+
+        return mCurrentUserSingleton;
     }
 
-    public com.spotify.android.appremote.api.SpotifyAppRemote getSpotifyAppRemote() {
+    public CurrentUser getCurrentUser() {
 
-        return mSpotifyAppRemote;
+        return mCurrentUser;
     }
 
+    public void setCurrentUser(CurrentUser currentUser) {
+        mCurrentUser = currentUser;
+
+    }
 }

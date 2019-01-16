@@ -37,8 +37,8 @@ public class MainNavigationActivity extends MenuInflaterActivity {
     private void setupView() {
 
         TextView userNameTextView = (TextView) findViewById(R.id.main_navigation_user_name_title);
-        //TODO: how to get user's name
-        String username = "Daniel";
+        CurrentUserSingleton currentUserSingleton = CurrentUserSingleton.getInstance();
+        String username = currentUserSingleton.getCurrentUser().getDisplayName();
         String title = "Welcome: " + username;
         userNameTextView.setText(title);
 
@@ -54,11 +54,9 @@ public class MainNavigationActivity extends MenuInflaterActivity {
         startActivity(intent);
     }
 
-    public void playPlaylist() {
-        //request id = 3 means it plays successfully
-
-    mPlayerApi.play("spotify:track:4B0JvthVoAAuygILe3n4Bs");
-
+    public void searchForASong(View view) {
+        Intent intent = new Intent(mContext, SearchSongActivity.class);
+        startActivity(intent);
     }
 
 

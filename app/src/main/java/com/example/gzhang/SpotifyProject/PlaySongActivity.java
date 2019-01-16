@@ -13,10 +13,15 @@ import android.widget.TextView;
 
 import com.spotify.android.appremote.api.PlayerApi;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
+import com.spotify.protocol.types.Artist;
 import com.spotify.protocol.types.Track;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.ArtistSimple;
 
 public class PlaySongActivity extends AppCompatActivity {
 
@@ -36,23 +41,53 @@ public class PlaySongActivity extends AppCompatActivity {
         subscribeToPlayerState();
     }
 
-    private void findSong() {
 
-        //TODO: find song based on user input
+    private void setupTrackInfo(kaaes.spotify.webapi.android.models.Track currentTrack) {
 
-        EditText userInputEditText = (EditText) findViewById(R.id.play_song_activity_search_edit_text);
 
-        String userInputText = userInputEditText.getText().toString();
+        TextView titleTextView = (TextView) findViewById(R.id.play_song_activity_song_title);
+        TextView artistTextView = (TextView) findViewById(R.id.play_song_activity_song_artist);
+        TextView albumTextView = (TextView) findViewById(R.id.play_song_activity_song_album);
 
-        SpotifyApi spotifyApi = new SpotifyApi();
+        String titleString = currentTrack.name;
 
-        //spotifyApi.setAccessToken();
+        String artistsString = "";
 
-        SpotifyService spotifyService = spotifyApi.getService();
 
-        spotifyService.getTrack(userInputText);
+        for (ArtistSimple artist : currentTrack.artists) {
+            artistsString.concat(artistsString + " " + artist.name);
+        }
 
-        //TODO: if successful and it is playing, search for lyrics
+        String albumString = currentTrack.album.name;
+
+        titleTextView.setText("Title: " + titleString);
+        artistTextView.setText("Artist: " + artistsString);
+        albumTextView.setText("Artist: " + albumString);
+
+    }
+
+    private void setupTrackInfo(Track currentTrack) {
+
+        TextView titleTextView = (TextView) findViewById(R.id.play_song_activity_song_title);
+        TextView artistTextView = (TextView) findViewById(R.id.play_song_activity_song_artist);
+        TextView albumTextView = (TextView) findViewById(R.id.play_song_activity_song_album);
+
+        String titleString = currentTrack.name;
+
+        String artistsString = "";
+
+        for (int i = 0 ; i < currentTrack.artists.size(); i++) {
+            String artistName = currentTrack.artists.get(i).name;
+            artistsString = artistName + " " + artistsString;
+
+        }
+
+        String albumString = currentTrack.album.name;
+
+        titleTextView.setText("Title: " + titleString);
+        artistTextView.setText("Artist: " + artistsString);
+        albumTextView.setText("Artist: " + albumString);
+
     }
 
     private void findLyrics() {
@@ -65,7 +100,7 @@ public class PlaySongActivity extends AppCompatActivity {
 
     private void playSong() {
 
-        HelperMethods.play("spotify:track:50kpGaPAhYJ3sGmk6vplg0");
+        HelperMethods.play("spotify:track:4Km5HrUvYTaSUfiSGPJeQR");
     }
 
     private void subscribeToPlayerState() {
@@ -75,7 +110,7 @@ public class PlaySongActivity extends AppCompatActivity {
                 .setEventCallback(playerState -> {
                     final Track track = playerState.track;
                     if (track != null) {
-                        setupTitleAndArtist(track);
+                        setupTrackInfo(track);
                     } else {
                         Log.d("MainNavigationActivity", "track doesn't work!");
 
@@ -83,16 +118,4 @@ public class PlaySongActivity extends AppCompatActivity {
                 });
     }
 
-    private void setupTitleAndArtist(Track track) {
-
-        TextView titleTextView = (TextView) findViewById(R.id.play_song_activity_song_title);
-        TextView artistTextView = (TextView) findViewById(R.id.play_song_activity_song_artist);
-
-        String title = track.name;
-        String artist = track.artist.name;
-
-        titleTextView.setText("Title: " + title);
-        artistTextView.setText("Artist: " + artist);
-
-    }
 }
