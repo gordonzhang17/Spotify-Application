@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="@string/search_song_activity_search_hint_title"
+            android:text="@string/search_activity_search_hint_title"
             android:textSize="28sp"
             android:textStyle="bold"/>
 
@@ -41,7 +41,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/search_song_activity_search_hint"
+            android:hint="@string/search_activity_search_hint"
             android:maxLines="1"/>
 
         <android.support.v7.widget.RecyclerView

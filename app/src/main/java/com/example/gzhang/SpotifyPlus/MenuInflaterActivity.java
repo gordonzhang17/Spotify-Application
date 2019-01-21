@@ -34,7 +34,7 @@ public class MenuInflaterActivity extends AppCompatActivity{
 
         final AlertDialog.Builder builder;
 
-        builder = new AlertDialog.Builder(mContext, android.R.style.Theme_Material);
+        builder = new AlertDialog.Builder(mContext, android.R.style.Theme_Material_Dialog_Alert);
 
         final AlertDialog alert = builder.create();
 

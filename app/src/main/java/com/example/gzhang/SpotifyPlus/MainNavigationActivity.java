@@ -3,11 +3,15 @@ package com.example.gzhang.SpotifyPlus;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.solver.widgets.Helper;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.gzhang.SpotifyPlus.Search.SearchActivity;
+import com.spotify.android.appremote.api.PlayerApi;
+import com.spotify.protocol.types.Track;
 
 public class MainNavigationActivity extends MenuInflaterActivity {
 
@@ -20,6 +24,7 @@ public class MainNavigationActivity extends MenuInflaterActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setupView();
+        subscribeToPlayerState();
 
     }
 
@@ -32,6 +37,8 @@ public class MainNavigationActivity extends MenuInflaterActivity {
         userNameTextView.setText(title);
 
     }
+
+
 
     public void returnToMainActivity(View view) {
         Intent intent = new Intent(mContext, MainActivity.class);
@@ -48,5 +55,46 @@ public class MainNavigationActivity extends MenuInflaterActivity {
         startActivity(intent);
     }
 
+    private void subscribeToPlayerState() {
+        PlayerApi playerApi = HelperMethods.getPlayerApi();
+
+        playerApi
+                .subscribeToPlayerState()
+                .setEventCallback(playerState -> {
+                    final Track track = playerState.track;
+                    if (track != null) {
+                        setupTrackInfo(track);
+                    } else {
+                        Log.d("MainNavigationActivity:", "track doesn't work!");
+
+                    }
+                });
+    }
+
+    private void setupTrackInfo(Track track) {
+
+
+        TextView titleTextView = (TextView) findViewById(R.id.main_navigation_song_title);
+        TextView artistTextView = (TextView) findViewById(R.id.main_navigation_song_artist);
+        TextView albumTextView = (TextView) findViewById(R.id.main_navigation_song_album);
+
+        String titleString = track.name;
+
+        String artistsString = HelperMethods.getStringOfArtists(track);
+
+        String albumString = track.album.name;
+
+        titleTextView.setText(titleString);
+        artistTextView.setText("Artist: " + artistsString);
+        albumTextView.setText("Album: " + albumString);
+
+
+        }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        startActivity(intent);
+    }
 
 }

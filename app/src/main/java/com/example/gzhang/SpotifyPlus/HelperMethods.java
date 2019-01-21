@@ -8,7 +8,9 @@ import android.net.Uri;
 
 import com.spotify.android.appremote.api.PlayerApi;
 import com.spotify.android.appremote.api.SpotifyAppRemote;
+import com.spotify.protocol.types.Artist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kaaes.spotify.webapi.android.models.ArtistSimple;
@@ -61,16 +63,45 @@ public class HelperMethods {
 
         List<ArtistSimple> listOfArtists = track.artists;
 
-        String artistsString = "";
+        StringBuilder stringBuilder = new StringBuilder();
 
-        for (ArtistSimple artist : listOfArtists) {
-            artistsString = artistsString.concat(artistsString + " " + artist.name);
+        for (int i = 0; i < listOfArtists.size(); i++) {
+
+            if (i == listOfArtists.size() - 1) {
+                // last artist
+                stringBuilder.append(listOfArtists.get(i).name);
+
+            } else {
+                //other artists
+                stringBuilder.append(listOfArtists.get(i).name).append(", ");
+
+            }
         }
-
-        return artistsString;
+        return stringBuilder.toString().trim();
     }
 
-    //TODO: create helper to return accessToken
+    public static String getStringOfArtists(com.spotify.protocol.types.Track track) {
+
+        List<Artist> listOfArtists = track.artists;
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < listOfArtists.size(); i++) {
+
+            if (i == listOfArtists.size() - 1) {
+                // last artist
+                stringBuilder.append(listOfArtists.get(i).name);
+
+            } else {
+                //other artists
+                stringBuilder.append(listOfArtists.get(i).name).append(", ");
+
+            }
+        }
+        return stringBuilder.toString().trim();
+    }
+
+            //TODO: create helper to return accessToken
 
 //    public static String getAccessToken(AppCompatActivity appCompatActivity, Context context) {
 //
@@ -137,35 +168,35 @@ public class HelperMethods {
 //
 //    }
 
-    private static void authenticationErrorPopup(Context context) {
+            private static void authenticationErrorPopup (Context context){
 
-        final AlertDialog.Builder builder;
+                final AlertDialog.Builder builder;
 
-        builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
+                builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
 
-        final AlertDialog alert = builder.create();
+                final AlertDialog alert = builder.create();
 
-        builder.setTitle(context.getResources().getString(R.string.login_activity_login_authentication_error_title));
-        builder.setMessage(context.getResources().getString(R.string.login_activity_login_authentication_description));
-        builder.setPositiveButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+                builder.setTitle(context.getResources().getString(R.string.login_activity_login_authentication_error_title));
+                builder.setMessage(context.getResources().getString(R.string.login_activity_login_authentication_description));
+                builder.setPositiveButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
-                alert.cancel();
+                        alert.cancel();
 
+                    }
+                });
+                builder.setNegativeButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        alert.cancel();
+                    }
+                });
+                builder.setIcon(android.R.drawable.ic_dialog_alert);
+                builder.show();
             }
-        });
-        builder.setNegativeButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                alert.cancel();
-            }
-        });
-        builder.setIcon(android.R.drawable.ic_dialog_alert);
-        builder.show();
-    }
 
 
-}
+        }
 
 
