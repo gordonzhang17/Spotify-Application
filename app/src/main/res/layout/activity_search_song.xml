@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchSongActivity">
+    tools:context=".Search.SearchActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -36,11 +36,20 @@
 
         <EditText
             android:id="@+id/search_song_activity_search_view"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/search_song_activity_search_hint"
             android:maxLines="1"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_song_activity_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
 
     </LinearLayout>
 
