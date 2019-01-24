@@ -39,6 +39,7 @@ dependencies {
     implementation project(':spotify-auth-release-1.1.0')
     implementation "com.google.code.gson:gson:2.8.5"
     implementation 'com.github.kaaes:spotify-web-api-android:0.4.1'
-
+    implementation 'com.github.scribejava:scribejava-apis:5.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 
 }
