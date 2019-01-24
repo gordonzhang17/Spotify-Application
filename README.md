@@ -1,1 +1,1 @@
-Project for Using Spotify SDK/ Spotify APIs for a new personal project!
+Project for Using Spotify SDK/ Spotify Web APIs for a new personal project to create an Android app!
