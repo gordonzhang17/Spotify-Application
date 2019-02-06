@@ -3,6 +3,7 @@ package com.example.gzhang.SpotifyPlus.Search;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,13 +11,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gzhang.SpotifyPlus.PlaySongActivity;
 import com.example.gzhang.SpotifyPlus.R;
+import com.example.gzhang.SpotifyPlus.RetrieveAlbumCoverInterface;
+import com.example.gzhang.SpotifyPlus.RetrieveAlbumCoverTask;
 import com.spotify.sdk.android.authentication.AuthenticationClient;
 import com.spotify.sdk.android.authentication.AuthenticationRequest;
 import com.spotify.sdk.android.authentication.AuthenticationResponse;
@@ -32,7 +34,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SongSelectedInterface, RetrieveAlbumCoverInterface {
 
     private EditText mSearchView;
     private Context mContext;
@@ -42,9 +44,11 @@ public class SearchActivity extends AppCompatActivity {
     private static final String CLIENT_ID = "8a2929a563264e3a900f55ac6b90a334";
 
     private RecyclerView mRecyclerView;
-    private SearchAdapter mSearchAdapter;
+    private SearchSongViewAdapter mSearchAdapter;
 
     private ArrayList<Track> mListOfTracks = new ArrayList<>();
+    private ArrayList<Bitmap> mListOfAlbumCovers = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +62,10 @@ public class SearchActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.search_song_activity_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setHasFixedSize(true);
-        mSearchAdapter = new SearchAdapter(mListOfTracks);
+        mSearchAdapter = new SearchSongViewAdapter(mListOfTracks, mListOfAlbumCovers);
 
     }
+
 
     private void setupSearchBarListener() {
 
@@ -149,20 +154,13 @@ public class SearchActivity extends AppCompatActivity {
 
                 List<Track> listOfTracks = tracksPager.tracks.items;
 
+                List<String> albumCoverURLs = getAlbumCoverURLs(listOfTracks);
+
+                fetchAlbumCovers(albumCoverURLs);
+
                 mListOfTracks.addAll(listOfTracks);
 
-
                 mRecyclerView.setAdapter(mSearchAdapter);
-                mSearchAdapter.setClickListener(new SearchAdapter.ItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-
-                        Intent intent = new Intent(mContext, PlaySongActivity.class);
-                        intent.putExtra("TRACK", mListOfTracks.get(position));
-                        startActivity(intent);
-
-                    }
-                });
 
             }
 
@@ -195,6 +193,46 @@ public class SearchActivity extends AppCompatActivity {
 
         mListOfTracks.clear();
         mSearchAdapter.notifyDataSetChanged();
+
+    }
+
+    private List<String> getAlbumCoverURLs(List<Track> listOfTracks) {
+
+        List<String> albumCoverURls = new ArrayList<>();
+
+        for (int i = 0; i < listOfTracks.size(); i++) {
+            String albumCoverURL = listOfTracks.get(i).album.images.get(0).url;
+            albumCoverURls.add(albumCoverURL);
+        }
+
+        return albumCoverURls;
+
+    }
+
+    private void fetchAlbumCovers(List<String> albumCoverURLs) {
+
+        for (int i = 0; i< albumCoverURLs.size(); i++) {
+
+            String albumImageURL = albumCoverURLs.get(i);
+
+            new RetrieveAlbumCoverTask().execute(albumImageURL);
+        }
+
+    }
+
+    @Override
+    public void songSelected(int positionOfSong) {
+
+        Intent intent = new Intent(mContext, PlaySongActivity.class);
+        intent.putExtra("TRACK", mListOfTracks.get(positionOfSong));
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onAlbumCoverImageRetrieved(Bitmap image) {
+
+        mListOfAlbumCovers.add(image);
 
     }
 }

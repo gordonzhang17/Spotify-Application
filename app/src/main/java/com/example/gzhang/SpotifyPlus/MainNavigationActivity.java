@@ -7,6 +7,7 @@ import android.support.constraint.solver.widgets.Helper;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.example.gzhang.SpotifyPlus.Search.SearchActivity;
@@ -55,6 +56,12 @@ public class MainNavigationActivity extends MenuInflaterActivity {
         startActivity(intent);
     }
 
+    public void searchArtist(View view) {
+
+        Intent intent = new Intent(mContext, MoreInformationAboutArtistActivity.class);
+        startActivity(intent);
+    }
+
     private void subscribeToPlayerState() {
         PlayerApi playerApi = HelperMethods.getPlayerApi();
 
@@ -96,5 +103,4 @@ public class MainNavigationActivity extends MenuInflaterActivity {
         Intent intent = new Intent(mContext, MainActivity.class);
         startActivity(intent);
     }
-
 }

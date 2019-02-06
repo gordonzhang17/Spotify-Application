@@ -4,17 +4,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.spotify.android.appremote.api.PlayerApi;
-import com.spotify.protocol.types.Track;
-
 import kaaes.spotify.webapi.android.models.AlbumSimple;
 
-public class PlaySongActivity extends AppCompatActivity {
+public class PlaySongActivity extends AppCompatActivity implements RetrieveAlbumCoverInterface{
 
     private kaaes.spotify.webapi.android.models.Track mCurrentTrack;
 
@@ -51,20 +47,15 @@ public class PlaySongActivity extends AppCompatActivity {
         artistTextView.setText("Artist: " + artistsString);
         albumTextView.setText("Album: " + albumString);
 
-
-
-
     }
 
     private void getAlbumArt() {
-
-        ImageView albumCoverImageView = (ImageView) findViewById(R.id.play_song_activity_song_album_cover);
 
         AlbumSimple album = mCurrentTrack.album;
         kaaes.spotify.webapi.android.models.Image image = album.images.get(0);
         String albumImageURL = image.url;
         //async task to get/set albumcoverart
-        new RetrieveAlbumCoverTask(albumCoverImageView).execute(albumImageURL);
+        new RetrieveAlbumCoverTask().execute(albumImageURL);
 
 
     }
@@ -74,6 +65,12 @@ public class PlaySongActivity extends AppCompatActivity {
         //TODO: get lyrics from Genius
 
 
+    }
 
+    @Override
+    public void onAlbumCoverImageRetrieved(Bitmap image) {
+
+        ImageView albumCoverImageView = (ImageView) findViewById(R.id.play_song_activity_song_album_cover);
+        albumCoverImageView.setImageBitmap(image);
     }
 }

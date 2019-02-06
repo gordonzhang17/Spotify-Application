@@ -14,6 +14,7 @@
     <string name="main_navigation_action_number_one">Find a song based off an artist</string>
     <string name="main_navigation_action_number_two">Search</string>
     <string name="main_navigation_action_number_three">Find a playlist based off an artist</string>
+    <string name="main_navigation_action_number_four">Find more information about an artist or a group</string>
     <string name="main_navigation_action_return">Return to previous page</string>
     <string name="main_navigation_currently_playing_title">Currently Playing:</string>
 
@@ -33,6 +34,8 @@
     <string name="search_activity_search_hint_title">Search</string>
 
     <string name="search_activity_search_hint">Type in the track, artist, album, or podcast</string>
+    <string name="search_artist_info_activity_search_hint">Type in the artist or group</string>
+
 
     <string name="play_song_activity_song_title">Title: </string>
     <string name="play_song_activity_song_artist">Artist: </string>
@@ -42,6 +45,8 @@
 
 
     <string name="title_activity_search_song">SearchActivity</string>
+    <string name="title_activity_more_information_about_artist">MoreInformationAboutArtistActivity
+    </string>
 
 
 </resources>

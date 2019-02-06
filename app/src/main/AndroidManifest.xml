@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gzhang.SpotifyPlus">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.gzhang.SpotifyPlus.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,25 +22,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.gzhang.SpotifyPlus.MainNavigationActivity"
+            android:name=".MainNavigationActivity"
             android:label="@string/title_activity_main_navigation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.gzhang.SpotifyPlus.LoginAndConnectActivity"
+            android:name=".LoginAndConnectActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <service
-            android:name="com.example.gzhang.SpotifyPlus.OnCloseAppService"
+            android:name=".OnCloseAppService"
             android:stopWithTask="false" />
 
         <activity
-            android:name="com.example.gzhang.SpotifyPlus.PlaySongActivity"
+            android:name=".PlaySongActivity"
             android:label="@string/title_activity_play_song"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.example.gzhang.SpotifyPlus.MenuInflaterActivity" />
+        <activity android:name=".MenuInflaterActivity" />
         <activity
-            android:name="com.example.gzhang.SpotifyPlus.Search.SearchActivity"
+            android:name=".Search.SearchActivity"
             android:label="@string/title_activity_search_song"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MoreInformationAboutArtistActivity"
+            android:label="@string/title_activity_more_information_about_artist"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

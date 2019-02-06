@@ -10,11 +10,10 @@ import java.io.InputStream;
 
 public class RetrieveAlbumCoverTask extends AsyncTask<String, Void, Bitmap> {
 
-    private ImageView mImageView;
+    //private ImageView mImageView;
 
-
-    public RetrieveAlbumCoverTask(ImageView imageView) {
-        this.mImageView = imageView;
+    public RetrieveAlbumCoverTask() {
+        //this.mImageView = imageView;
     }
 
     @Override
@@ -34,7 +33,9 @@ public class RetrieveAlbumCoverTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-        mImageView.setImageBitmap(result);
+        //TODO: call interface
+
+        //mImageView.setImageBitmap(result);
     }
 
 }

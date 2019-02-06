@@ -73,6 +73,20 @@
                 style="@style/buttonAppearance"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
+                android:text="@string/main_navigation_action_number_four"
+                android:onClick="searchArtist"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/buttonAppearance"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
                 android:onClick="returnToMainActivity"
                 android:text="@string/main_navigation_action_return" />
 
