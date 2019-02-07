@@ -16,11 +16,13 @@ import kaaes.spotify.webapi.android.models.Track;
 public class SearchSongViewAdapter extends RecyclerView.Adapter<SearchSongViewHolder> {
 
     private ArrayList<Track> mListOfTracks;
-    private ArrayList<Bitmap> mListOfAlumbCovers;
+    private ArrayList<Bitmap> mListOfAlbumCovers;
+    private SongSelectedInterface mSongSelectedInterface;
 
-    public SearchSongViewAdapter(ArrayList<Track> listOfTracks, ArrayList<Bitmap> listOfAlbumCovers) {
+    public SearchSongViewAdapter(ArrayList<Track> listOfTracks, ArrayList<Bitmap> listOfAlbumCovers, SongSelectedInterface songSelectedInterface) {
         mListOfTracks = listOfTracks;
-        mListOfAlumbCovers = listOfAlbumCovers;
+        mListOfAlbumCovers = listOfAlbumCovers;
+        mSongSelectedInterface = songSelectedInterface;
     }
 
     @Override
@@ -29,20 +31,14 @@ public class SearchSongViewAdapter extends RecyclerView.Adapter<SearchSongViewHo
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cell_search_song, parent, false);
 
-        return new SearchSongViewHolder(view);
+        return new SearchSongViewHolder(view, mSongSelectedInterface);
     }
 
     @Override
     public void onBindViewHolder(SearchSongViewHolder holder, int position) {
-        String title = mListOfTracks.get(position).name;
-        String artistsString = HelperMethods.getStringOfArtists(mListOfTracks.get(position));
-        String album = mListOfTracks.get(position).album.name;
 
+        holder.bindView(mListOfTracks.get(position), mListOfAlbumCovers.get(position));
 
-        holder.mTitle.setText(title);
-        holder.mArtist.setText("Artist: " + artistsString);
-        holder.mAlbum.setText("Album: " + album);
-        holder.mAlbumCover.setImageBitmap(mListOfAlumbCovers.get(position));
     }
 
     @Override

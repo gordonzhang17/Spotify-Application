@@ -33,12 +33,16 @@ public class MainNavigationActivity extends MenuInflaterActivity {
 
         TextView userNameTextView = (TextView) findViewById(R.id.main_navigation_user_name_title);
         CurrentUserSingleton currentUserSingleton = CurrentUserSingleton.getInstance();
-        String username = currentUserSingleton.getCurrentUser().getDisplayName();
+        String username;
+        if (currentUserSingleton.getCurrentUser() != null) {
+            username = currentUserSingleton.getCurrentUser().getDisplayName();
+        } else {
+            username = "user";
+        }
         String title = "Welcome: " + username;
         userNameTextView.setText(title);
 
     }
-
 
 
     public void returnToMainActivity(View view) {

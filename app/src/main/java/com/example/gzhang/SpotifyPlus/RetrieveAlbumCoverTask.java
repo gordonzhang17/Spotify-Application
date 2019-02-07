@@ -12,8 +12,11 @@ public class RetrieveAlbumCoverTask extends AsyncTask<String, Void, Bitmap> {
 
     //private ImageView mImageView;
 
-    public RetrieveAlbumCoverTask() {
+    private RetrieveAlbumCoverInterface mRetrieveAlbumCoverInterface;
+
+    public RetrieveAlbumCoverTask(RetrieveAlbumCoverInterface retrieveAlbumCoverInterface) {
         //this.mImageView = imageView;
+        mRetrieveAlbumCoverInterface = retrieveAlbumCoverInterface;
     }
 
     @Override
@@ -33,9 +36,7 @@ public class RetrieveAlbumCoverTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected void onPostExecute(Bitmap result) {
-        //TODO: call interface
-
-        //mImageView.setImageBitmap(result);
+        mRetrieveAlbumCoverInterface.onAlbumCoverImageRetrieved(result);
     }
 
 }

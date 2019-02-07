@@ -47,6 +47,7 @@
     <string name="title_activity_search_song">SearchActivity</string>
     <string name="title_activity_more_information_about_artist">MoreInformationAboutArtistActivity
     </string>
+    <string name="title_activity_artist_web_view">ArtistWebViewActivity</string>
 
 
 </resources>

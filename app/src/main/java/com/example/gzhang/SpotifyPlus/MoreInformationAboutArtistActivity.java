@@ -1,6 +1,7 @@
 package com.example.gzhang.SpotifyPlus;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,49 +24,59 @@ public class MoreInformationAboutArtistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_more_information_about_artist);
+        setContentView(R.layout.activity_search_artist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mSearchBar = (EditText) findViewById(R.id.search_artist_info_activity_search_view);
         mContext = MoreInformationAboutArtistActivity.this;
 
-        showWebView("");
-
-
-        //setupSearchBarListener();
+        setupSearchBarListener();
 
     }
 
+
     private void setupSearchBarListener() {
 
-        mSearchBar.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                String userInputText = mSearchBar.getText().toString();
-                String URL = createURLString(userInputText);
-                showWebView(URL);
-                return true;
+        mSearchBar = (EditText) findViewById(R.id.search_artist_info_activity_search_view);
+
+        mSearchBar.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    String userInputText = mSearchBar.getText().toString();
+                    String URL = createURLString(userInputText);
+                    showWebView(URL);
+                    return true;
+                }
+                return false;
             }
-            return false;
         });
     }
 
     private String createURLString(String userInput) {
 
-        //TODO: decide what website you want the user to look at
+        //TODO: do this until you figure out how to use genius api
+        //TODO: separate by dashes
+        //String[] userInputArray = userInput.split(" ");
 
-        return "";
+//        String newInput = "";
+//
+//        for (int i = 0; i < userInputArray.length; i++) {
+//            newInput = newInput + "-" + userInputArray[i];
+//        }
 
+        String geniusWebsiteURL = "https://genius.com/artists/";
+        String url = geniusWebsiteURL + userInput;
+
+        return url;
 
     }
 
     private void showWebView(String URL) {
 
-        //TODO: shouldn't you go to the new activity to show the webview?
-
-        mWebView = new WebView(mContext);
-        setContentView(mWebView);
-        mWebView.loadUrl("https://www.genius.com");
+        Intent intent = new Intent(mContext, ArtistWebViewActivity.class);
+        intent.putExtra("URL", URL);
+        startActivity(intent);
 
     }
 

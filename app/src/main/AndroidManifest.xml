@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher_new_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -45,6 +45,10 @@
         <activity
             android:name=".MoreInformationAboutArtistActivity"
             android:label="@string/title_activity_more_information_about_artist"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ArtistWebViewActivity"
+            android:label="@string/title_activity_artist_web_view"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
